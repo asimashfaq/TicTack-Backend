@@ -6,8 +6,11 @@
     "sourceMap": true,
     "target": "es6",
     "outDir": "./dist",
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
  },
+
   "exclude": ["node_modules"],
-  "include": ["*.ts"]
+  "include": ["*.ts", "src/typings/typings.d.ts"]
  }

@@ -1,7 +1,7 @@
 import { Tictac,  Box } from "../../../../models/TicTac";
 import { TictacService } from "../..";
 import { ITictacRepository } from "../../../../repository/tictac";
-test("getGameplay_noGameplayInDB_emptyList", async () => {
+  test("getGameplay_noGameplayInDB_emptyList", async () => {
     
     const tictacSerivce = new TictacService(new EmptyMockRepository());
     const gamePlays: Tictac[] = await tictacSerivce.getGamePlays();
@@ -14,9 +14,16 @@ test("getGameplay_noGameplayInDB_emptyList", async () => {
     expect(gamePlays.length).toBe(1);
   });
 
+
   class EmptyMockRepository implements ITictacRepository {
     async gamePlays(): Promise<Tictac[]> {
      return [];
+    }
+    async gamePlay(id:string):Promise<Tictac>{
+      return ;
+    }
+    async saveGamePlay(tictac:Tictac):Promise<Tictac>{
+      return;
     }
   }
   class SingleMockRepository implements ITictacRepository {
@@ -30,5 +37,11 @@ test("getGameplay_noGameplayInDB_emptyList", async () => {
          new Box("box3",2,4,'o')    
      ]
     )];
+    }
+    async gamePlay(id:string):Promise<Tictac>{
+      return ;
+    }
+    async saveGamePlay(tictac:Tictac):Promise<Tictac>{
+      return;
     }
   }

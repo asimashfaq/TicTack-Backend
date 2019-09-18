@@ -2,15 +2,19 @@ import { Tictac,  Box } from "../../../../models/TicTac";
 import { TictacService } from "../..";
 import { TictacRepository } from "../../../../repository/tictac";
 import {prisma as db} from '../../../../../prisma/generated/prisma-client' 
+// Check when the db is empty
 test("getGameplay_noGameplayInDB_emptyList", async () => {
     await db.deleteManyGamePlays({})
     const tictacSerivce = new TictacService(new TictacRepository());
     const history: Tictac[] = await tictacSerivce.getGamePlays();
     expect(history.length).toBe(0);
   });
-  test("getGameplay_oneGameplayInDB_ListOneGameplay", async () => {
-    await db.deleteManyGamePlays({})
-    const gameplay = new Tictac("1","o","x","1",false,
+
+
+test("saveGameplay_saveGameplayInDB_returnId", async () => {
+    
+    const tictacSerivce = new TictacService(new TictacRepository());
+    const gameplay = new Tictac("1","testplayer","x","1",false,
     [
         new Box("box0",1,1,'x'),
         new Box("box4",1,3,'x'),
@@ -19,16 +23,17 @@ test("getGameplay_noGameplayInDB_emptyList", async () => {
         new Box("box3",2,4,'o')    
     ]
    )
- //  const gp = db.
-   await db.createGamePlay({
-    player1:gameplay.player1,
-    player2:gameplay.player2,
-    winner:gameplay.winner,
-    draw:gameplay.draw,
-    boxes:{create:gameplay.boxes}
-})
+    const stictac: Tictac = await tictacSerivce.saveGamePlay(gameplay);
+    const tictac:Tictac = await tictacSerivce.getGamePlay(stictac.id)
+    expect(stictac.id).toEqual(tictac.id);
+});
+test("getGameplay_oneGameplayInDB_ListOneGameplay", async () => {
     const tictacSerivce = new TictacService(new TictacRepository());
     const history: Tictac[] = await tictacSerivce.getGamePlays();
     expect(history.length).toBe(1);
- await db.deleteManyGamePlays({})
-  });
+    const deleterecord:Tictac[] = await db.gamePlays({"where":{player1:"testplayer"}}).$fragment("{id}")
+    if (deleterecord.length > 0) {
+      await db.deleteGamePlay({id:deleterecord[0].id})
+    }
+     
+});
