@@ -5,12 +5,17 @@
     "pretty": true,
     "sourceMap": true,
     "target": "es6",
-    "outDir": "./dist",
-    "baseUrl": "./",
+    "outDir": "dist",
+    "baseUrl": ".",
+      "paths": {
+          "*": [
+              "node_modules/*",
+              "src/*"
+          ]
+        },
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
  },
 
-  "exclude": ["node_modules"],
-  "include": ["*.ts", "src/typings/typings.d.ts"]
+  "include": ["src"]
  }

@@ -1,6 +1,6 @@
 import tictacModel from '../typings/tictacModel';
 import boxModel from '../typings/boxModel';
-import { Int, ID_Input } from '../../prisma/generated/prisma-client';
+import { Int, ID_Input } from '../prisma/generated/prisma-client';
 import * as Joi from '@hapi/joi';
 
 export class Box implements boxModel {

@@ -1,8 +1,5 @@
 import { Tictac } from '../../models/TicTac';
-import {
-  prisma,
-  ID_Input
-} from '../../../prisma/generated/prisma-client/index';
+import { prisma, ID_Input } from '../../prisma/generated/prisma-client/index';
 export interface ITictacRepository {
   gamePlays(): Promise<Tictac[]>;
   gamePlay(id: ID_Input): Promise<Tictac>;

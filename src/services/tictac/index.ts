@@ -1,6 +1,6 @@
 import { Tictac } from '../../models/TicTac';
 import { TictacRepository } from '../../repository/tictac';
-import { ID_Input } from '../../../prisma/generated/prisma-client';
+import { ID_Input } from '../../prisma/generated/prisma-client';
 
 export class TictacService {
   private repo: TictacRepository;
