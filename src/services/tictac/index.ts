@@ -9,4 +9,12 @@ export class TictacService {
         const gamePlays = await this.repo.gamePlays();
         return gamePlays;
     }
+    async getGamePlay(id:string):Promise<Tictac>{
+        const gamePlay = await this.repo.gamePlay(id);
+        return gamePlay;
+    }
+    async saveGamePlay(tictac:Tictac):Promise<Tictac>{
+        const gamePlay = await this.repo.saveGamePlay(tictac);
+        return gamePlay;
+    }
 }

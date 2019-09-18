@@ -10,5 +10,13 @@ class TictacController {
         const gameplays = await this.tictacService.getGamePlays();
         res.json(gameplays)
     }
+    one = async(req:Request,res:Response)=>{
+        const gameplay = await this.tictacService.getGamePlay(req.body);
+        res.json(gameplay)
+    }
+    add = async(req:Request,res:Response)=>{
+        const gameplay = await this.tictacService.saveGamePlay(req.body);
+        res.json(gameplay)
+    }
 }
 export default new TictacController()
