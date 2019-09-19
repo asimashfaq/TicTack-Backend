@@ -4,7 +4,7 @@ type GamePlay {
   player2: String!
   winner: String!
   draw: Boolean!
-  boxes: Array<Box>
+  boxes: [Box]
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }

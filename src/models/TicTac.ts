@@ -40,7 +40,10 @@ export class Tictac {
 }
 export const GamePlayAdd = Joi.object({
   player1: Joi.string().required(),
-  player2: Joi.string().required()
+  player2: Joi.string().required(),
+  winner: Joi.string(),
+  draw: Joi.boolean(),
+  boxes: Joi.array()
 });
 export const GameSearch = Joi.object({
   id: Joi.string().required()

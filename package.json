@@ -2,10 +2,10 @@
   "name": "nodeapp",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "build": "rimraf dist && tsc",
-    "start": "node dist/index.js",
+    "build": "rimraf dist && tsc  --listEmittedFiles",
+    "start": "node dist/server.js",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}' --fix --format verbose",
     "dev": "nodemon --exec ts-node src/server.ts --watch src",
